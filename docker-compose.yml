@@ -1,36 +1,40 @@
 version: "3.8"
 
 networks:
-  portfolio-website:
+  nextjs:
 
 services:
-  nextjs:
+  site:
     build:
       context: .
       dockerfile: nextjs.dockerfile
       target: dev
-    container_name: nextjs_pw
+    container_name: nextjs
     volumes:
       - ./nextjs:/usr/src/app
       - nextjs-dev-node_modules:/usr/src/app/node_modules
       - nextjs-dev-next:/usr/src/app/.next
+    restart: always
     ports:
       - "3000:3000"
-    restart: always
     networks:
-      - portfolio-website
+      - nextjs
 
   npm:
     image: node:alpine
-    container_name: npm_pw
+    container_name: npm
     volumes:
       - ./nextjs:/usr/src/app
     working_dir: /usr/src/app
-    depends_on:
-      - nextjs
-    networks:
-      - portfolio-website
-    entrypoint: ['npm']
+    entrypoint: ["npm"]
+
+  npx:
+    image: node:alpine
+    container_name: npx
+    volumes:
+      - ./nextjs:/usr/src/app
+    working_dir: /usr/src/app
+    entrypoint: ["npx"]
 
 volumes:
   nextjs-dev-node_modules:
