@@ -21,7 +21,7 @@ Two additional containers are included that handle `npm` and `npx` commands _wit
 ```
 docker-compose run --rm npm install tailwindcss
 
-docker-compose run --rm npx create-next-app .
+docker-compose run --rm npx create-next-app . --use-npm
 ```
 
 Next, follow the steps from the [studio/README.md](studio/README.md) to get the **Sanity Studio** set up.
