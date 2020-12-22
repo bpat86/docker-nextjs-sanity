@@ -1,6 +1,11 @@
 ## This is where your Next.js app goes
 
-To get started, delete this file and then do one of the following:
+To get started, delete this file and spin up the Docker network by following the instructions on the main [README.md](../README.md).
 
-- Clone your project or copy all of the files directly into this `nextjs` directory.
-- Spin up the Docker network by following the instructions on the main [README.md](../README.md), and install a brand new Next.js project by running `npx create-next-app .` in your terminal.
+Clone your project or copy all of the files directly into this `nextjs` directory.
+
+To install a brand new [Next.js](https://nextjs.org/docs/getting-started) project, run the following command in your terminal:
+
+```
+docker-compose run --rm npx create-next-app .
+```
