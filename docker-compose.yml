@@ -3,6 +3,10 @@ version: "3.8"
 networks:
   nextjs:
 
+volumes:
+  nextjs-node_modules:
+  nextjs-next:
+
 services:
   site:
     build:
@@ -11,9 +15,9 @@ services:
       target: dev
     container_name: nextjs
     volumes:
-      - ./nextjs:/usr/src/app
-      - nextjs-dev-node_modules:/usr/src/app/node_modules
-      - nextjs-dev-next:/usr/src/app/.next
+      - ./nextjs:/usr/src/app:delegated
+      - nextjs-node_modules:/usr/src/app/node_modules
+      - nextjs-next:/usr/src/app/.next
     restart: always
     ports:
       - "3000:3000"
@@ -27,6 +31,8 @@ services:
       - ./nextjs:/usr/src/app
     working_dir: /usr/src/app
     entrypoint: ["npm"]
+    networks:
+      - nextjs
 
   studio_npm:
     image: node:alpine
@@ -35,6 +41,8 @@ services:
       - ./studio:/usr/src/app
     working_dir: /usr/src/app
     entrypoint: ["npm"]
+    networks:
+      - nextjs
 
   nextjs_npx:
     image: node:alpine
@@ -43,6 +51,8 @@ services:
       - ./nextjs:/usr/src/app
     working_dir: /usr/src/app
     entrypoint: ["npx"]
+    networks:
+      - nextjs
 
   studio_npx:
     image: node:alpine
@@ -51,7 +61,5 @@ services:
       - ./studio:/usr/src/app
     working_dir: /usr/src/app
     entrypoint: ["npx"]
-
-volumes:
-  nextjs-dev-node_modules:
-  nextjs-dev-next:
+    networks:
+      - nextjs
