@@ -3,10 +3,6 @@ version: "3.8"
 networks:
   nextjs:
 
-volumes:
-  nextjs-node_modules:
-  nextjs-next:
-
 services:
   site:
     build:
@@ -53,3 +49,7 @@ services:
     entrypoint: ["npm"]
     networks:
       - nextjs
+
+volumes:
+  nextjs-node_modules:
+  nextjs-next:
