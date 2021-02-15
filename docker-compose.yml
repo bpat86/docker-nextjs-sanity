@@ -34,16 +34,6 @@ services:
     networks:
       - nextjs
 
-  studio_npm:
-    image: node:alpine
-    container_name: npm
-    volumes:
-      - ./studio:/usr/src/app
-    working_dir: /usr/src/app
-    entrypoint: ["npm"]
-    networks:
-      - nextjs
-
   nextjs_npx:
     image: node:alpine
     container_name: npx
@@ -54,12 +44,12 @@ services:
     networks:
       - nextjs
 
-  studio_npx:
+  studio_npm:
     image: node:alpine
-    container_name: npx
+    container_name: npm
     volumes:
       - ./studio:/usr/src/app
     working_dir: /usr/src/app
-    entrypoint: ["npx"]
+    entrypoint: ["npm"]
     networks:
       - nextjs
