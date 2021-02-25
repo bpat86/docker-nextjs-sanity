@@ -8,7 +8,7 @@ To get started, make sure you have [Docker installed](https://docs.docker.com/do
 
 Next, navigate in your terminal to the directory you cloned this, and spin up the container(s) for the web server by running:
 
-```
+```bash
 docker-compose up -d --build site
 ```
 
@@ -18,10 +18,11 @@ Bringing up the Docker Compose network with `site` instead of just using `up`, e
 
 Two additional containers are included that handle `npm` and `npx` commands _without_ having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
 
-```
+````bash
 docker-compose run --rm nextjs_npm install tailwindcss
 
 docker-compose run --rm nextjs_npx create-next-app . --use-npm
 ```
 
 Next, follow the steps from the [studio/README.md](studio/README.md) to get the **Sanity Studio** set up.
+````
